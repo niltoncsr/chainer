@@ -1,0 +1,23 @@
+{
+  "name": "chainer",
+  "version": "1.0.0",
+  "description": "A personal project to create habits, constructing chains of initerrupted tasks and keeping tracking of them.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node_modules/webpack/bin/webpack.js --watch & node_modules/stylus/bin/stylus -w src/styles/styles.styl -o dist/styles.css -r"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niltoncsr/chainer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/niltoncsr/chainer/issues"
+  },
+  "homepage": "https://github.com/niltoncsr/chainer#readme",
+  "devDependencies": {
+    "stylus": "^0.54.5",
+    "webpack": "^1.14.0"
+  }
+}
