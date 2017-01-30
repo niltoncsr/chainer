@@ -9,11 +9,18 @@ new Vue({
 	methods: {
 		register: function() {
 			var today = new Date();
-			this.activities[today.getFullYear()] = {
-				[today.getMonth()]: {
-					[today.getDate()]: 'I created a GitHub repo with very useful code snippets used internally'
-				}
-			};
+			var year = today.getFullYear(),
+					month = today.getMonth(),
+					day = today.getDate();
+
+			if(!this.activities.year)
+				this.activities.year = {}
+
+			if(!this.activities.year.month)
+				this.activities.year.month = {}
+
+			if(!this.activities.year.month.day)
+				this.activities.year.month.day = this.description
 		}
 	}
 });
