@@ -6,6 +6,13 @@ new Vue({
 		activities: {}
 	},
 
+
+	created: function() {
+		if(!localStorage.chainerActivities)
+			localStorage.setItem('chainerActivities', {})
+	},
+
+
 	methods: {
 		register: function() {
 			var year = (new Date()).getFullYear(),
