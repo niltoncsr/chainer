@@ -8,10 +8,9 @@ new Vue({
 
 	methods: {
 		register: function() {
-			var today = new Date();
-			var year = today.getFullYear(),
-					month = today.getMonth(),
-					day = today.getDate();
+			var year = (new Date()).getFullYear(),
+					month = (new Date()).getMonth(),
+					day = (new Date()).getDate();
 
 			if(!this.activities.year)
 				this.activities.year = {}

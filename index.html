@@ -7,8 +7,12 @@
 <body>
 	<div id="app">
 		<h2>Work</h2>
-		<input type="text" name="" v-model="description">
-		<div id="add" @click="register()" class="day"></div>
+		<div>
+			<input type="text" v-model="description">
+			<button @click="register()">Add today to chain</button>
+		</div>
+		<div id="chain">
+			<div class="day"></div>
 		</div>
 	</div>
 	<script type="text/javascript" src="dist/bundle.js"></script>
