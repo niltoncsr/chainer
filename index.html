@@ -12,7 +12,11 @@
 			<button @click="trackToday()">Add today to chain</button>
 		</div>
 		<div id="chain">
-			<div class="day" v-for="day in trackedDaysOfTheMonth"></div>
+			<div class="day" v-for="(day, i) in trackedDaysOfTheMonth">
+				<div class="description">
+					{{ day[i+1] }}
+				</div>
+			</div>
 		</div>
 	</div>
 	<script type="text/javascript" src="dist/bundle.js"></script>
