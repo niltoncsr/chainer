@@ -16,6 +16,25 @@ new Vue({
 			this.activities = JSON.parse(localStorage.getItem('chainerActivities'));
 	},
 
+	computed: {
+		trackedDaysOfTheMonth: function() {
+			var currentYear = (new Date()).getFullYear(),
+					currentMonth = (new Date()).getMonth() + 1,
+					appActivities = this.activities;
+					activitiesDays = [], activities = [];
+
+			activitiesDays = Object.keys(appActivities[currentYear][currentMonth]);
+			activitiesAndComment = activitiesDays.map(function(day) {
+				var el = {};
+
+				el[day] = appActivities[currentYear][currentMonth][day];
+
+				return el
+			});
+
+			return activitiesAndComment;
+		},
+	},
 
 	methods: {
 		// Track the present day in to the app and save it on localStorage
