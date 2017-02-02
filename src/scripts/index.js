@@ -9,17 +9,21 @@ new Vue({
 
 
 	created: function() {
+		// Create key in localStorage or set the actual content to the app
 		if(!localStorage.chainerActivities)
-			localStorage.setItem('chainerActivities', {})
+			localStorage.setItem('chainerActivities', JSON.stringify({}));
+		else
+			this.activities = JSON.parse(localStorage.getItem('chainerActivities'));
 	},
 
 
 	methods: {
+		// Track the present day in to the app and save it on localStorage
 		trackToday: function() {
 			var today = new Date(),
 					currentYear = today.getFullYear(),
-					currentMonth = today.getMonth(),
-					currentDay = today.getDate(),
+					currentMonth = today.getMonth() + 1,
+					currentDay = today.getDate();
 
 			if(!this.activities[currentYear]) {
 				this.activities[currentYear] = {};
@@ -30,6 +34,8 @@ new Vue({
 
 			if(!this.activities[currentYear][currentMonth][currentDay]) {
 				this.activities[currentYear][currentMonth][currentDay] = this.description;
+
+				localStorage.setItem('chainerActivities', JSON.stringify(this.activities));
 				this.trackedToday = true;
 			}
 		}
