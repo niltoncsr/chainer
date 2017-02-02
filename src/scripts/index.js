@@ -3,7 +3,8 @@ var Vue = require('../vendors/vue/dist/vue.js');
 new Vue({
 	el: '#app',
 	data: {
-		activities: {}
+		activities: {},
+		trackedToday: false
 	},
 
 
@@ -14,19 +15,23 @@ new Vue({
 
 
 	methods: {
-		register: function() {
-			var year = (new Date()).getFullYear(),
-					month = (new Date()).getMonth(),
-					day = (new Date()).getDate();
+		trackToday: function() {
+			var today = new Date(),
+					currentYear = today.getFullYear(),
+					currentMonth = today.getMonth(),
+					currentDay = today.getDate(),
 
-			if(!this.activities[year])
-				this.activities[year] = {}
+			if(!this.activities[currentYear]) {
+				this.activities[currentYear] = {};
+			}
 
-			if(!this.activities[year][month])
-				this.activities[year][month] = {}
+			if(!this.activities[currentYear][currentMonth])
+				this.activities[currentYear][currentMonth] = {}
 
-			if(!this.activities[year][month][day])
-				this.activities[year][month][day] = this.description
+			if(!this.activities[currentYear][currentMonth][currentDay]) {
+				this.activities[currentYear][currentMonth][currentDay] = this.description;
+				this.trackedToday = true;
+			}
 		}
 	}
 });
