@@ -6,9 +6,16 @@
 </head>
 <body>
 	<div id="app">
-		<div class="day" v-for="day in days">
-			<div class="description">
-				{{ day.work }}
+		<h2>Work</h2>
+		<div>
+			<input type="text" v-model="description">
+			<button @click="trackToday()">Add today to chain</button>
+		</div>
+		<div id="chain">
+			<div class="day" v-for="(day, i) in trackedDaysOfTheMonth">
+				<div class="description">
+					{{ day[i+1] }}
+				</div>
 			</div>
 		</div>
 	</div>
