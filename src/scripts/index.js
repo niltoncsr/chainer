@@ -60,7 +60,6 @@ new Vue({
 						tracked: false
 					});
 				};
-				console.log(activities)
 				return activities;
 			};
 		}

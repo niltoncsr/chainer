@@ -15,7 +15,7 @@
 			background-color: rgba($main-green, .05)
 
 #chain
-	margin-top: 1em
+	margin-top: 3em
 
 .day
 	display: inline-block
@@ -28,17 +28,27 @@
 		background-color: $main-green
 	&:not(:last-child)
 		margin-right: 5px
+	&:hover
+		.description
+		.day-number
+			display: block
+
+	.day-number
 	.description
 		display: none
-		margin-top: .5em
-		padding: .5em
 		position: absolute
-		top: 100%
 		width: 100%
+		padding: .5em
 		background-color: rgba(0,0,0, .8)
 		border-radius: 3px
 		font-size: .6em
 		text-align: center
 		color: #fff
-	&:hover .description
-		display: block
+
+	.description
+		top: 100%
+		margin-top: .5em
+
+	.day-number
+		bottom: 100%
+		margin-bottom: .5em

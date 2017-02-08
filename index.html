@@ -18,9 +18,8 @@
 
 			<div id="chain">
 				<div class="day" v-for="day in allDaysOfTheMonth" :class="{ 'tracked': day.tracked }">
-					<div class="description" v-if="day.tracked">
-						{{ day.activity }}
-					</div>
+					<div class="day-number">Day {{ day.day }}</div>
+					<div class="description" v-if="day.tracked">{{ day.activity }}</div>
 				</div>
 			</div>
 		</main>
