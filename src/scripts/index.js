@@ -4,6 +4,7 @@ new Vue({
 	el: '[data-app]',
 	data: {
 		activities: {},
+		description: '',
 		trackedToday: false
 	},
 
@@ -14,6 +15,7 @@ new Vue({
 			localStorage.setItem('chainerActivities', JSON.stringify({}));
 		else
 			this.activities = JSON.parse(localStorage.getItem('chainerActivities'));
+
 	},
 
 	computed: {
@@ -27,21 +29,19 @@ new Vue({
 		},
 
 		allDaysOfTheMonth: function() {
-			var appActivities = this.activities,
-					activitiesDays = [], activities = [];
+			var activitiesDays = [],
+					activities = [];
 
-			activitiesDays = Object.keys(appActivities[this.today.year][this.today.month]);
+			activitiesDays = Object.keys(this.activities[this.today.year][this.today.month]);
 
 			// Current tracked days saved on localStorage
 			activities = activitiesDays.map((day) => {
 				var el = {
-					day: 0,
-					activity: '',
 					tracked: true
 				};
 
 				el.day = Number(day);
-				el.activity = appActivities[this.today.year][this.today.month][day];
+				el.activity = this.activities[this.today.year][this.today.month][day].activity;
 
 				return el;
 			});
@@ -76,7 +76,10 @@ new Vue({
 				this.activities[this.today.year][this.today.month] = {}
 
 			if(!this.activities[this.today.year][this.today.month][this.today.day]) {
-				this.activities[this.today.year][this.today.month][this.today.day] = this.description;
+				this.activities[this.today.year][this.today.month][this.today.day] = {
+					activity: this.description,
+					tracked: true
+				};
 
 				localStorage.setItem('chainerActivities', JSON.stringify(this.activities));
 				this.trackedToday = true;
