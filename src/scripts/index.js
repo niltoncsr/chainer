@@ -26,30 +26,52 @@ new Vue({
 			}
 		},
 
-		trackedDaysOfTheMonth: function() {
+		allDaysOfTheMonth: function() {
 			var appActivities = this.activities,
 					activitiesDays = [], activities = [];
 
 			activitiesDays = Object.keys(appActivities[this.today.year][this.today.month]);
-			activitiesAndComment = activitiesDays.map((day) => {
-				var el = {};
 
-				el[day] = appActivities[this.today.year][this.today.month][day];
+			// Current tracked days saved on localStorage
+			activities = activitiesDays.map((day) => {
+				var el = {
+					day: 0,
+					activity: '',
+					tracked: true
+				};
 
-				return el
+				el.day = Number(day);
+				el.activity = appActivities[this.today.year][this.today.month][day];
+
+				return el;
 			});
 
-			return activitiesAndComment;
-		},
+			// Check if there are any untracked day comparing the last with today
+			if(activities[activities.length-1].day === this.today.day) {
+				return activities;
+			} else {
+
+				let lastActivity = activities[activities.length-1].day;
+				let daysWithoutTracking = this.today.day - lastActivity;
+				for(let i = 1; i < daysWithoutTracking; i++) {
+					activities.push({
+						day: lastActivity + i,
+						activity: null,
+						tracked: false
+					});
+				};
+				console.log(activities)
+				return activities;
+			};
+		}
 	},
 
 	methods: {
 		// Track the present day in to the app and save it on localStorage
 		trackToday: function() {
 
-			if(!this.activities[this.today.year]) {
-				this.activities[this.today.year] = {};
-			}
+			if(!this.activities[this.today.year])
+				this.activities[this.today.year] = {}
 
 			if(!this.activities[this.today.year][this.today.month])
 				this.activities[this.today.year][this.today.month] = {}

@@ -17,9 +17,9 @@
 			</form>
 
 			<div id="chain">
-				<div class="day" v-for="(day, i) in trackedDaysOfTheMonth">
-					<div class="description">
-						{{ day[i+1] }}
+				<div class="day" v-for="day in allDaysOfTheMonth" :class="{ 'tracked': day.tracked }">
+					<div class="description" v-if="day.tracked">
+						{{ day.activity }}
 					</div>
 				</div>
 			</div>
