@@ -11,11 +11,28 @@ new Vue({
 
 	created: function() {
 		// Create key in localStorage or set the actual content to the app
-		if(!localStorage.chainerActivities)
+		if(!localStorage.chainerActivities) {
 			localStorage.setItem('chainerActivities', JSON.stringify({}));
-		else
+		} else {
 			this.activities = JSON.parse(localStorage.getItem('chainerActivities'));
 
+			// Check if there are any untracked day comparing the last with today
+			let activitiesDays = Object.keys(this.activities[this.today.year][this.today.month]),
+					lastActivity = Number(activitiesDays[activitiesDays.length-1]);
+
+			if(lastActivity === this.today.day) {
+				return;
+			} else {
+				let daysWithoutTracking = this.today.day - lastActivity;
+
+				for(let i = 1; i < daysWithoutTracking; i++) {
+					this.activities[this.today.year][this.today.month][lastActivity + i] = {
+						activity: null,
+						tracked: false
+					};
+				};
+			};
+		};
 	},
 
 	computed: {
@@ -25,7 +42,7 @@ new Vue({
 				day: currentDay.getDate(),
 				month: currentDay.getMonth() + 1,
 				year: currentDay.getFullYear()
-			}
+			};
 		},
 
 		allDaysOfTheMonth: function() {
@@ -37,7 +54,7 @@ new Vue({
 			// Current tracked days saved on localStorage
 			activities = activitiesDays.map((day) => {
 				var el = {
-					tracked: true
+					tracked: this.activities[this.today.year][this.today.month][day].tracked
 				};
 
 				el.day = Number(day);
@@ -45,23 +62,7 @@ new Vue({
 
 				return el;
 			});
-
-			// Check if there are any untracked day comparing the last with today
-			if(activities[activities.length-1].day === this.today.day) {
-				return activities;
-			} else {
-
-				let lastActivity = activities[activities.length-1].day;
-				let daysWithoutTracking = this.today.day - lastActivity;
-				for(let i = 1; i < daysWithoutTracking; i++) {
-					activities.push({
-						day: lastActivity + i,
-						activity: null,
-						tracked: false
-					});
-				};
-				return activities;
-			};
+			return activities;
 		}
 	},
 
