@@ -1,7 +1,7 @@
 var Vue = require('../vendors/vue/dist/vue.js');
 
 new Vue({
-	el: '#app',
+	el: '[data-app]',
 	data: {
 		activities: {},
 		trackedToday: false

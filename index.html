@@ -5,19 +5,25 @@
 	<link rel="stylesheet" type="text/css" href="dist/styles.css">
 </head>
 <body>
-	<div id="app">
-		<h2>Work</h2>
-		<div>
-			<input type="text" v-model="description">
-			<button @click="trackToday()">Add today to chain</button>
-		</div>
-		<div id="chain">
-			<div class="day" v-for="(day, i) in trackedDaysOfTheMonth">
-				<div class="description">
-					{{ day[i+1] }}
+	<div id="wrapper">
+		<header id="page-header">
+			<h1>Chainer</h1>
+			<p>Track your activities daily and create a chain that longers it takes, harder you will break it.</p>
+		</header>
+
+		<main data-app>
+			<form id="new-track-wrapper">
+				<input type="text" placeholder="A brief description of your today's activity" v-model="description"><button type="submit" @click.prevent="trackToday">✓</button>
+			</form>
+
+			<div id="chain">
+				<div class="day" v-for="(day, i) in trackedDaysOfTheMonth">
+					<div class="description">
+						{{ day[i+1] }}
+					</div>
 				</div>
 			</div>
-		</div>
+		</main>
 	</div>
 	<script type="text/javascript" src="dist/bundle.js"></script>
 </body>

@@ -1,0 +1,41 @@
+#new-track-wrapper
+	input[type='text']
+		padding: .5em 1em
+		border: 1px solid $light-border
+		border-radius: 3px 0 0 3px
+		width: 30em
+	button[type='submit']
+		background: none
+		border 1px solid $main-green
+		border-left: none
+		padding: .5em 1em
+		border-radius: 0 3px 3px 0
+		&:hover
+			cursor: pointer
+			background-color: rgba($main-green, .05)
+
+#chain
+	margin-top: 1em
+
+.day
+	display: inline-block
+	position: relative
+	width: 50px
+	height: 50px
+	background-color: $main-green
+	&:not(:last-child)
+		margin-right: 5px
+	.description
+		display: none
+		margin-top: .5em
+		padding: .5em
+		position: absolute
+		top: 100%
+		width: 100%
+		background-color: rgba(0,0,0, .8)
+		border-radius: 3px
+		font-size: .6em
+		text-align: center
+		color: #fff
+	&:hover .description
+		display: block
