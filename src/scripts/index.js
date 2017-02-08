@@ -17,17 +17,24 @@ new Vue({
 	},
 
 	computed: {
+		today: function() {
+			var currentDay = (new Date());
+			return {
+				day: currentDay.getDate(),
+				month: currentDay.getMonth() + 1,
+				year: currentDay.getFullYear()
+			}
+		},
+
 		trackedDaysOfTheMonth: function() {
-			var currentYear = (new Date()).getFullYear(),
-					currentMonth = (new Date()).getMonth() + 1,
-					appActivities = this.activities;
+			var appActivities = this.activities,
 					activitiesDays = [], activities = [];
 
-			activitiesDays = Object.keys(appActivities[currentYear][currentMonth]);
-			activitiesAndComment = activitiesDays.map(function(day) {
+			activitiesDays = Object.keys(appActivities[this.today.year][this.today.month]);
+			activitiesAndComment = activitiesDays.map((day) => {
 				var el = {};
 
-				el[day] = appActivities[currentYear][currentMonth][day];
+				el[day] = appActivities[this.today.year][this.today.month][day];
 
 				return el
 			});
@@ -39,20 +46,16 @@ new Vue({
 	methods: {
 		// Track the present day in to the app and save it on localStorage
 		trackToday: function() {
-			var today = new Date(),
-					currentYear = today.getFullYear(),
-					currentMonth = today.getMonth() + 1,
-					currentDay = today.getDate();
 
-			if(!this.activities[currentYear]) {
-				this.activities[currentYear] = {};
+			if(!this.activities[this.today.year]) {
+				this.activities[this.today.year] = {};
 			}
 
-			if(!this.activities[currentYear][currentMonth])
-				this.activities[currentYear][currentMonth] = {}
+			if(!this.activities[this.today.year][this.today.month])
+				this.activities[this.today.year][this.today.month] = {}
 
-			if(!this.activities[currentYear][currentMonth][currentDay]) {
-				this.activities[currentYear][currentMonth][currentDay] = this.description;
+			if(!this.activities[this.today.year][this.today.month][this.today.day]) {
+				this.activities[this.today.year][this.today.month][this.today.day] = this.description;
 
 				localStorage.setItem('chainerActivities', JSON.stringify(this.activities));
 				this.trackedToday = true;
