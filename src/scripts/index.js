@@ -1,4 +1,4 @@
-var Vue = require('../vendors/vue/dist/vue.js');
+import Vue from 'vue';
 
 new Vue({
 	el: '[data-app]',
