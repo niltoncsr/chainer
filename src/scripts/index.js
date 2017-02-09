@@ -5,7 +5,7 @@ new Vue({
 	data: {
 		activities: {},
 		description: '',
-		trackedToday: false
+		todayIsTracked: false
 	},
 
 
@@ -21,6 +21,7 @@ new Vue({
 					lastActivity = Number(activitiesDays[activitiesDays.length-1]);
 
 			if(lastActivity === this.today.day) {
+				this.todayIsTracked = true;
 				return;
 			} else {
 				let daysWithoutTracking = this.today.day - lastActivity;
@@ -83,7 +84,12 @@ new Vue({
 				};
 
 				localStorage.setItem('chainerActivities', JSON.stringify(this.activities));
-				this.trackedToday = true;
+				this.allDaysOfTheMonth.push({
+					day: this.today.day,
+					activity: this.description,
+					tracked: true
+				})
+				this.todayIsTracked = true;
 			}
 		}
 	}
