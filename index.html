@@ -12,10 +12,15 @@
 		</header>
 
 		<main data-app>
-			<p v-if="todayIsTracked">You've already tracked today 😉</p>
-			<form id="new-track-wrapper" v-else>
-				<input type="text" placeholder="A brief description of your today's activity" v-model="description"><button type="submit" @click.prevent="trackToday">✓</button>
-			</form>
+			<div id="form-wrapper">
+				<p v-if="todayIsTracked">You've already tracked today 😉</p>
+				<form id="new-track-wrapper" v-else>
+					<input type="text" placeholder="A brief description of your today's activity" v-model="description"><button type="submit" @click.prevent="trackToday">✓</button>
+				</form>
+				<transition name="tooltip">
+					<span class="tooltip" v-if="todayIsTracked">Tracked!</span>
+				</transition>
+			</div>
 
 			<div id="chain">
 				<div class="day" v-for="day in allDaysOfTheMonth" :class="{ 'tracked': day.tracked }">

@@ -1,0 +1,31 @@
+.tooltip
+	padding: .5em 1em
+	position: absolute
+	top: 0
+	right: 0
+	opacity: 0
+	font-size: .8em
+	border: 1px solid $light-border
+	border-radius: 3px
+	box-shadow: 1px 1px	$shadow
+	&::after
+		content: ''
+		width: .5em
+		height: .5em
+		position: absolute
+		left: 0
+		right: 0
+		top: calc(100% - .25em)
+		margin: auto
+		transform: rotate(45deg)
+		border-right: 1px solid $light-border
+		border-bottom: 1px solid $light-border
+		background: $pure-white
+		box-shadow: 1px 1px $shadow
+
+.tooltip-enter-active
+	transition: all 1s ease
+
+.tooltip-enter
+	top: .5em
+	opacity: 1
