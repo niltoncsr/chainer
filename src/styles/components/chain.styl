@@ -1,15 +1,17 @@
 #chain
+	display: flex
+	justify-content: center
+	width: 100%
 	margin-top: 3em
 
 .day
-	display: inline-block
 	position: relative
 	width: 50px
 	height: 50px
 	border: 1px dashed $light-border
 	&.tracked
 		border: none
-		background-color: $main-green
+		background-color: darken($main-green, 30%)
 	&:not(:last-child)
 		margin-right: 5px
 	&:hover
