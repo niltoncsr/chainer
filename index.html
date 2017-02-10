@@ -13,13 +13,22 @@
 
 		<main data-app>
 			<div id="form-wrapper">
-				<p v-if="todayIsTracked">You've already tracked today 😉</p>
-				<form id="new-track-wrapper" v-else>
-					<textarea placeholder="A brief description of your today's activity" v-model="description"></textarea><button type="submit" title="Track it!" @click.prevent="trackToday">✓</button>
+				<form id="new-track-wrapper">
+					<textarea
+						placeholder="A brief description of your today's activity"
+						v-model="description"
+						:disabled="todayIsTracked">
+					</textarea>
+					<transition name="tooltip">
+						<span class="tooltip" v-if="todayIsTracked">Tracked! 😉</span>
+					</transition>
+					<button
+						type="submit" title="Track it!"
+						:disabled="todayIsTracked"
+						@click.prevent="trackToday">
+							✓
+					</button>
 				</form>
-				<transition name="tooltip">
-					<span class="tooltip" v-if="todayIsTracked">Tracked!</span>
-				</transition>
 			</div>
 
 			<div id="chain">

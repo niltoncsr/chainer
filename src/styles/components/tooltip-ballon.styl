@@ -1,8 +1,14 @@
 .tooltip
 	padding: .5em 1em
 	position: absolute
-	top: 0
+	display: block
+	background-color: $pure-white
+	top: calc(100% - 6em)
 	right: 0
+	left: 0
+	margin: auto
+	width: 25%
+	text-align: center
 	opacity: 0
 	font-size: .8em
 	border: 1px solid $light-border
@@ -24,8 +30,8 @@
 		box-shadow: 1px 1px $shadow
 
 .tooltip-enter-active
-	transition: all 1s ease
+	transition: all 3s ease
 
 .tooltip-enter
-	top: .5em
+	transform: translateY(2em)
 	opacity: 1

@@ -26,6 +26,14 @@ main[data-app]
 		color: $pure-white
 		padding: .5em 2em
 		border-radius: 3px
+		&[disabled]
+			border: 1px solid $light-border
+			background-color: $pure-white
+			color: $global-color
 		&:hover
 			cursor: pointer
 			background-color: darken($main-green, 25%)
+			&[disabled]
+				cursor: not-allowed
+				background-color: $pure-white
+
