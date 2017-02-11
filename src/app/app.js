@@ -16,7 +16,7 @@ import trackToday from './vue-methods/track-today.js';
 
 
 new Vue({
-	el: '[data-app]',
+	el: '#app-wrapper',
 	data: initialData,
 
 	created: createdHook,

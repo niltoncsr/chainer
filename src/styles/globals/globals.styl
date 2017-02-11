@@ -14,6 +14,11 @@ h2
 
 
 // The app container
-#wrapper
+#app-wrapper
 	margin: 0 auto
 	width: $viewport-width
+
+#app-view.blurred
+	filter: blur(3px)
+	transition: all .5s ease
+	pointer-events: none

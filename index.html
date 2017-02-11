@@ -5,39 +5,50 @@
 	<link rel="stylesheet" type="text/css" href="dist/styles.css">
 </head>
 <body>
-	<div id="wrapper">
-		<header id="page-header">
-			<h1>Chainer</h1>
-			<p>Track your activities daily and create a chain that longers it takes, harder you will break it.</p>
-		</header>
+	<div id="app-wrapper" data-app>
+		<div id="app-view">
+			<header id="page-header">
+				<h1>Chainer</h1>
+				<p>Track your activities daily and create a chain that longers it takes, harder you will break it.</p>
+			</header>
 
-		<main data-app>
-			<div id="form-wrapper">
-				<form id="new-track-wrapper">
-					<textarea
-						placeholder="A brief description of your today's activity"
-						v-model="description"
-						:disabled="todayIsTracked">
-					</textarea>
-					<transition name="tooltip">
-						<span class="tooltip" v-if="todayIsTracked">Tracked! 😉</span>
-					</transition>
-					<button
-						type="submit" title="Track it!"
-						:disabled="todayIsTracked"
-						@click.prevent="trackToday">
-							✓
-					</button>
-				</form>
-			</div>
-
-			<div id="chain">
-				<div class="day" v-for="day in allDaysOfTheMonth" :class="{ 'tracked': day.tracked }">
-					<div class="day-number">Day {{ day.day }}</div>
-					<div class="description" v-if="day.tracked">{{ day.activity }}</div>
+			<main>
+				<div id="form-wrapper">
+					<form id="new-track-wrapper">
+						<textarea
+							placeholder="A brief description of your today's activity"
+							v-model="description"
+							:disabled="todayIsTracked">
+						</textarea>
+						<transition name="tooltip">
+							<span class="tooltip" v-if="todayIsTracked">Tracked! 😉</span>
+						</transition>
+						<button
+							type="submit" title="Track it!"
+							:disabled="todayIsTracked"
+							@click.prevent="trackToday">
+								✓
+						</button>
+					</form>
 				</div>
-			</div>
-		</main>
+
+				<div id="chain">
+					<div class="day" v-for="day in allDaysOfTheMonth" :class="{ 'tracked': day.tracked }">
+						<div class="day-number">Day {{ day.day }}</div>
+						<div class="description" v-if="day.tracked">{{ day.activity }}</div>
+					</div>
+				</div>
+			</main>
+		</div>
+
+		<div id="modal" v-if="showingActivity.isActive">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</div>
 	</div>
 	<script type="text/javascript" src="dist/bundle.js"></script>
 </body>
