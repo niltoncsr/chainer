@@ -1,5 +1,9 @@
 export default {
 	activities: {},
 	description: '',
-	todayIsTracked: false
+	todayIsTracked: false,
+	showingActivity: {
+		isActive: false,
+		activity: {}
+	}
 }
