@@ -26,6 +26,7 @@
 						<button
 							type="submit" title="Track it!"
 							:disabled="todayIsTracked"
+							:class="{ 'unclickable': showingActivity.isActive }"
 							@click.prevent="trackToday">
 								✓
 						</button>
@@ -33,7 +34,10 @@
 				</div>
 
 				<div id="chain">
-					<div class="day" v-for="day in allDaysOfTheMonth" :class="{ 'tracked': day.tracked }">
+					<div class="day" v-for="day in allDaysOfTheMonth"
+						:class="{ 'tracked': day.tracked,
+											'unclickable': showingActivity.isActive
+										}">
 						<div class="day-number">Day {{ day.day }}</div>
 						<div class="more-link"
 							v-if="day.tracked" @click.stop="viewDay(day)"></div>

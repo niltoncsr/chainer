@@ -12,7 +12,6 @@ import today from './vue-computed/today.js';
 import allDaysOfTheMonth from './vue-computed/all-days-of-the-month.js';
 import modalEl from './vue-computed/modal-el.js';
 import appViewEl from './vue-computed/app-view-el.js';
-import unclickableEls from './vue-computed/unclickable-els.js';
 
 // Vue methods
 import trackToday from './vue-methods/track-today.js';
@@ -29,7 +28,6 @@ new Vue({
 	computed: {
 		today: today,
 		allDaysOfTheMonth: allDaysOfTheMonth,
-		unclickableEls: unclickableEls,
 		modalEl: modalEl,
 		appViewEl: appViewEl,
 	},

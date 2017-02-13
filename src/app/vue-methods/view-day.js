@@ -5,7 +5,5 @@ export default function(day) {
 
 	this.modalEl.innerText = day.activity;
 
-	this.unclickableEls.forEach(function(el) {
-		el.classList.add('untrackable');
-	});
+	this.showingActivity.isActive = true;
 };
