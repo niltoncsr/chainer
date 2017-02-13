@@ -10,9 +10,14 @@ import initialData from './vue-initial-data.js';
 // Vue computed properties
 import today from './vue-computed/today.js';
 import allDaysOfTheMonth from './vue-computed/all-days-of-the-month.js';
+import modalEl from './vue-computed/modal-el.js';
+import appViewEl from './vue-computed/app-view-el.js';
+import unclickableEls from './vue-computed/unclickable-els.js';
 
 // Vue methods
 import trackToday from './vue-methods/track-today.js';
+import viewDay from './vue-methods/view-day.js';
+import viewApp from './vue-methods/view-app.js';
 
 
 new Vue({
@@ -24,9 +29,14 @@ new Vue({
 	computed: {
 		today: today,
 		allDaysOfTheMonth: allDaysOfTheMonth,
+		unclickableEls: unclickableEls,
+		modalEl: modalEl,
+		appViewEl: appViewEl,
 	},
 
 	methods: {
-		trackToday: trackToday
+		trackToday: trackToday,
+		viewDay: viewDay,
+		viewApp: viewApp,
 	}
 });

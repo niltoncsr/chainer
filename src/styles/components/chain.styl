@@ -14,29 +14,51 @@
 	&.tracked
 		border: none
 		background-color: darken($main-green, 30%)
+	&.untrackable
+		pointer-events: none
 	&:not(:last-child)
 		margin-right: 5px
 	&:hover
-		.description
 		.day-number
 			display: block
+		.modal-link
+			opacity: 1
+			transform: scale(1)
+		&.tracked
+			box-shadow: 0 1px 3px 1px $shadow
 
 	.day-number
-	.description
 		display: none
 		position: absolute
+		top: 100%
 		width: 100%
 		padding: .5em
+		margin-top: .5em
 		background-color: rgba(0,0,0, .8)
 		border-radius: 3px
 		font-size: .6em
 		text-align: center
-		color: #fff
+		color: $pure-white
 
-	.description
-		top: 100%
-		margin-top: .5em
-
-	.day-number
-		bottom: 100%
-		margin-bottom: .5em
+.more-link
+	position: absolute
+	display: flex
+	justify-content: center
+	align-items: center
+	width: 30px
+	height: 30px
+	margin: auto
+	top: 0
+	right: 0
+	bottom: 0
+	left: 0
+	opacity: 0
+	border-radius: 50%
+	border: 1px solid $pure-white
+	color: $pure-white
+	transform: scale(.9)
+	transition: all .2s ease
+	cursor: pointer
+	&::before
+		content: '+'
+		font-weight: bold
