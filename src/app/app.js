@@ -1,3 +1,5 @@
+require('../styles/styles.styl');
+
 // Vue library
 import Vue from 'vue';
 
