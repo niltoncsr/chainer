@@ -6,15 +6,7 @@ module.exports = {
 		path: './dist',
 		filename: 'bundle.js'
 	},
-	devtool: 'cheap-source-map',
 	module: {
-		preLoaders: [
-			{
-				test: /\.js$/,
-				loader: 'eslint-loader',
-				exclude: /node_modules/
-			},
-		],
 		loaders: [
 			{
 				test: /\.js$/,

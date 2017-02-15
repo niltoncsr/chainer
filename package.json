@@ -4,7 +4,8 @@
   "description": "A personal project to create habits, constructing chains of initerrupted tasks and keeping tracking of them.",
   "main": "index.js",
   "scripts": {
-    "dev": "node_modules/webpack/bin/webpack.js -w"
+    "dev": "node_modules/webpack/bin/webpack.js --config webpack.development.config.js -w",
+    "build": "node_modules/webpack/bin/webpack.js --optimize-minimize --config webpack.production.config.js"
   },
   "repository": {
     "type": "git",
