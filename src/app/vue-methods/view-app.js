@@ -4,4 +4,4 @@ export default function() {
 	this.appViewEl.classList.remove('blurred');
 
 	this.showingActivity.isActive = false;
-};
+}

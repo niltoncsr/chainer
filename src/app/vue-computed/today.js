@@ -5,4 +5,4 @@ export default function() {
 		month: currentDay.getMonth() + 1,
 		year: currentDay.getFullYear()
 	};
-};
+}

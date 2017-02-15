@@ -1,12 +1,20 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-	entry: './src/app/app.js',
+	entry: './src/app.js',
 	output: {
 		path: './dist',
 		filename: 'bundle.js'
 	},
+	devtool: 'cheap-source-map',
 	module: {
+		preLoaders: [
+			{
+				test: /\.js$/,
+				loader: 'eslint-loader',
+				exclude: /node_modules/
+			},
+		],
 		loaders: [
 			{
 				test: /\.js$/,

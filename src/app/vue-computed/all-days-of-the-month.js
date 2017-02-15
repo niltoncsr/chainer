@@ -16,4 +16,4 @@ export default function() {
 		return el;
 	});
 	return activities;
-};
+}

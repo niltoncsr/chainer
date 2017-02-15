@@ -20,7 +20,7 @@ export default function() {
 					activity: null,
 					tracked: false
 				};
-			};
-		};
-	};
+			}
+		}
+	}
 }

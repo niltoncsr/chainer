@@ -9,4 +9,4 @@ export default function(day) {
 		this.modalEl.innerHTML = '<em>Seems like you don\'t wanna talk about it.</em>';
 
 	this.showingActivity.isActive = true;
-};
+}
