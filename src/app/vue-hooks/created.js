@@ -1,26 +1,34 @@
 export default function() {
-	// Create key in localStorage or set the actual content to the app
+
+	// If there's no item in localStorage, create
 	if(!localStorage.chainerActivities) {
-		localStorage.setItem('chainerActivities', JSON.stringify({}));
-	} else {
-		this.activities = JSON.parse(localStorage.getItem('chainerActivities'));
+		localStorage.setItem('chainerActivities', JSON.stringify({}))
+	}
 
-		// Check if there are any untracked day comparing the last with today
-		let activitiesDays = Object.keys(this.activities[this.today.year][this.today.month]),
-				lastActivity = Number(activitiesDays[activitiesDays.length-1]);
+	// Inject what had been stored into the app
+	this.activities = JSON.parse(localStorage.getItem('chainerActivities'));
 
-		if(lastActivity === this.today.day) {
-			this.todayIsTracked = true;
-			return;
-		} else {
-			let daysWithoutTracking = this.today.day - lastActivity;
+	// If there's no entry for the current year, create it
+	if(!this.activities[this.today.year]) {
+		this.activities[this.today.year] = {}
+	}
 
-			for(let i = 1; i < daysWithoutTracking; i++) {
-				this.activities[this.today.year][this.today.month][lastActivity + i] = {
-					activity: null,
-					tracked: false
-				};
-			}
+	// If there's no entry for the current month, create it and the first day too
+	if(!this.activities[this.today.year][this.today.month]) {
+		this.activities[this.today.year][this.today.month] = {}
+	}
+
+	let activitiesDays =
+		Object.keys(this.activities[this.today.year][this.today.month]).length + 1;
+
+	if(activitiesDays !== this.today.day) {
+		let daysWithoutTracking = this.today.day - activitiesDays;
+
+		for(let i = 0; i < daysWithoutTracking; i++) {
+			this.activities[this.today.year][this.today.month][activitiesDays + i] = {
+				activity: null,
+				tracked: false
+			};
 		}
 	}
 }
